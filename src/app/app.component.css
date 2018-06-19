@@ -1,0 +1,13 @@
+.container{
+  width:400px;
+  height:auto;
+  background: gray;
+  margin: auto;
+  text-align: center;
+}
+h1{
+  background: lightgreen;
+}
+li{
+  list-style: none;
+}

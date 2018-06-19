@@ -1,3 +1,31 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <h1>
+    {{title}}
+  </h1>
+  <div class="todos">
+
+    <div>
+      <form (submit)="addTodo($event)">
+        <div>
+          <span [hidden]="!newTodo" style="color: #30ff40;">Typing...</span>
+        </div>
+        <input [(ngModel)]="newTodo" class="textfield" name="newTodo" placeholder="Add Todo">
+        <button  type="submit" [disabled]="newTodo===''">Add Todo</button>
+      </form>
+    </div>
+
+    <ul>
+      <li *ngFor="let todo of todos">
+        <input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" />
+        <span [ngClass]="{'checked': todo.completed}">{{ todo.newTodo }}></span>
+        <button (click)="deleteTodo(index)" class="btn btn-danger">Delete</button>
+        <!--<button (click)="editTodo(i)" class="delete-icon">Edit</button>-->
+      </li>
+    </ul>
+
+    <div class="mtop20">
+      <button (click)="deleteSelectedTodos()">Delete Selected</button>
+    </div>
+
+  </div>
+</div>
