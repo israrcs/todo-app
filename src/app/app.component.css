@@ -1,13 +1,24 @@
-.container{
-  width:400px;
-  height:auto;
-  background: gray;
-  margin: auto;
+.todo-box{
+  width: 60%;
+  height: auto;
+  margin: 10px auto;
   text-align: center;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+.items{
+  padding-top: 10px;
+}
+.item{
+  height:40px;
 }
 h1{
   background: lightgreen;
 }
 li{
   list-style: none;
+}
+.selected-btn{
+  padding-top: 20px;
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="todo-box">
   <h1>
     {{title}}
   </h1>
@@ -6,25 +6,29 @@
 
     <div>
       <form (submit)="addTodo($event)">
-        <div>
-          <span [hidden]="!newTodo" style="color: #30ff40;">Typing...</span>
+        <div class="col-md-12">
+          <input [(ngModel)]="newTodo" class="textfield form-control col-md-7 float-left" name="newTodo" placeholder="Add Todo">
+          <button  type="submit" class="btn btn-primary col-md-4" [disabled]="newTodo===''">Add Todo</button>
         </div>
-        <input [(ngModel)]="newTodo" class="textfield" name="newTodo" placeholder="Add Todo">
-        <button  type="submit" [disabled]="newTodo===''">Add Todo</button>
+        <span [hidden]="!newTodo" style="color: #30ff40;">Typing...</span>
       </form>
     </div>
 
-    <ul>
-      <li *ngFor="let todo of todos">
-        <input type="checkbox" class="checkbox" [(ngModel)]="todo.completed" />
-        <span [ngClass]="{'checked': todo.completed}">{{ todo.newTodo }}></span>
-        <button (click)="deleteTodo(index)" class="btn btn-danger">Delete</button>
-        <!--<button (click)="editTodo(i)" class="delete-icon">Edit</button>-->
-      </li>
-    </ul>
+    <div class="items">
+      <div *ngFor="let todo of todos; let i = index" class="col-md-12 item">
+        <div class="col-md-6 float-left text-left custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="{{'item'+ i}}" [(ngModel)]="todo.completed" />
+          <label class="custom-control-label" for="{{'item'+ i}}" [ngClass]="{'checked': todo.completed}">{{todo.newTodo}}</label>
+        </div>
+        <div class="col-md-6 float-right">
+          <button (click)="deleteTodo(index)" class="btn btn-danger">Delete</button>
+          <button (click)="editTodo(i)" class="btn btn-success">Edit</button>
+        </div>
+      </div>
+    </div>
 
-    <div class="mtop20">
-      <button (click)="deleteSelectedTodos()">Delete Selected</button>
+    <div class="selected-btn">
+      <button (click)="deleteSelectedTodos()" class="btn btn-info">Delete Selected</button>
     </div>
 
   </div>
